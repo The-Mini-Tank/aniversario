@@ -4,65 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-    <title>GIF na Página Web</title>
-    <style>
-        body, html {
-            font-family: MinhaFonte, sans-serif;
-            height: 100%;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: repeating-linear-gradient(20deg, white, white 10px, #cdf7ff 10px, #cdf7ff 20px);
-        }
-
-        #imagem {
-            cursor: pointer;
-            margin-left: 80px;
-        }
-
-        #texto {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            display: none;
-            animation: pular 1s ease forwards;
-            font-size: 25px;
-        }
-
-        @keyframes waveAnim{
-            0%, 40%, 100%{
-                transform: translateY(0);
-            }
-            20%{
-                transform: translateY(-70px);
-            }
-        }
-
-        @font-face {
-            font-family: MinhaFonte;
-            src: url('ka1.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: MinhaFonte2;
-            src: url('font2.ttf') format('truetype');
-        }
-
-        @keyframes pular {
-            0% {
-                transform: translate(-50%, -50%) translateY(0); /* Posição inicial */
-            }
-            50% {
-                transform: translate(-50%, -50%) translateY(-180px); /* Pulo para cima */
-            }
-            100% {
-                transform: translate(-50%, -50%) translateY(-150px); /* Volta à posição inicial */
-            }
-        }
-    </style>
+    <title>Feliz Aniversário</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -72,59 +15,14 @@
     <div id="texto2" style="font-family: MinhaFonte2, sans-serif; display: none; position: absolute; margin-top: 450px; text-align: center; padding: 15px;"> 
         Feliz Tchola Dayyyyy 🎈🎂🥳 <br>
         Chegou o dia tão esperado, tão especial e único do ano. <br> 
-        O dia em que você completa finalmente os 23 anos(já tava te apelidando de edward cullen). <br>
+        O dia em que você completa finalmente os 23 anos (já tava te apelidando de edward cullen). <br>
         Que seu dia seja repleto de alegria e carinho daqueles que estão próximos agora. <br> 
         Você é a pessoa mais incrível que eu conheço e merece tudo de bom desse mundo. <br> 
         Espero que na próxima eu possa dividir esse momento com você. <br>
         <strong> Feliz aniversário, meu amor. <br>
         Te amo forte ♥️ </strong></div>
 
-
     <audio id="audio" src="flamengo.mp3"></audio>        
-    <script>
-        var imagem = document.getElementById("imagem");
-        var texto = document.getElementById("texto");
-        var texto2 = document.getElementById("texto2");
-        var audio = document.getElementById("audio");
-        var cliques = 0;
-        var animacaoAtiva = false;
-
-        // Função para mudar o src da imagem temporariamente
-        function mudarSrcTemporariamente(novoSrc, duracao) {
-            var srcOriginal = imagem.src;
-            imagem.src = novoSrc;
-
-            setTimeout(function() {
-                imagem.src = srcOriginal;
-                // Reativar o evento de clique após a animação terminar
-                animacaoAtiva = false;
-            }, duracao);
-
-            // Remover temporariamente o evento de clique
-            animacaoAtiva = true;
-        }
-
-        // Função para mudar permanentemente o src da imagem após 3 cliques
-        function mudarSrcDefinitivamente(novoSrc) {
-            imagem.src = novoSrc;
-        }
-
-        // Adiciona um ouvinte de eventos para o clique na imagem
-        imagem.addEventListener("click", function() {
-            if (!animacaoAtiva && cliques < 3) {
-                cliques++;
-                if (cliques === 3) {
-                    mudarSrcDefinitivamente("gif_win.gif");
-                    texto.style.display = "block"; 
-                    texto2.style.display = "block";
-                    audio.volume = 0.5;
-                    audio.play();
-                    confetti();
-                } else {
-                    mudarSrcTemporariamente("gif_click.gif", 1000); 
-                }
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

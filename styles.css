@@ -1,18 +1,56 @@
 body, html {
+    font-family: MinhaFonte, sans-serif;
     height: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #68D2E8;
+    background-image: repeating-linear-gradient(20deg, white, white 10px, #cdf7ff 10px, #cdf7ff 20px);
 }
 
 #imagem {
     cursor: pointer;
+    margin-left: 80px;
 }
 
 #texto {
-    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    margin-top: 20px;
+    display: none;
+    animation: pular 1s ease forwards;
+    font-size: 25px;
+}
+
+@keyframes waveAnim{
+    0%, 40%, 100%{
+        transform: translateY(0);
+    }
+    20%{
+        transform: translateY(-70px);
+    }
+}
+
+@font-face {
+    font-family: MinhaFonte;
+    src: url('ka1.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: MinhaFonte2;
+    src: url('font2.ttf') format('truetype');
+}
+
+@keyframes pular {
+    0% {
+        transform: translate(-50%, -50%) translateY(0); /* Posição inicial */
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(-180px); /* Pulo para cima */
+    }
+    100% {
+        transform: translate(-50%, -50%) translateY(-150px); /* Volta à posição inicial */
+    }
 }
