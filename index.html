@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <title>GIF na Página Web</title>
     <style>
         body, html {
@@ -28,8 +29,17 @@
             text-align: center;
             display: none;
             animation: pular 1s ease forwards;
+            font-size: 25px;
         }
 
+        @keyframes waveAnim{
+            0%, 40%, 100%{
+                transform: translateY(0);
+            }
+            20%{
+                transform: translateY(-70px);
+            }
+        }
 
         @font-face {
             font-family: MinhaFonte;
@@ -55,7 +65,8 @@
     </style>
 </head>
 <body>
-    <div id="texto">FELIZ TCHOLA DAY!!!!</div>
+
+    <div id="texto"> <span style="color: rgb(180, 63, 63);">FELIZ</span> TCHOLA <span style="color: rgb(180, 63, 63);">DAY!!!</span></div>
     <img id="imagem" src="gif_standing.gif" alt="GIF animado">
     <br>
     <div id="texto2" style="font-family: MinhaFonte2, sans-serif; display: none; position: absolute; margin-top: 450px; text-align: center; padding: 15px;"> 
@@ -65,15 +76,16 @@
         Que seu dia seja repleto de alegria e carinho daqueles que estão próximos agora. <br> 
         Você é a pessoa mais incrível que eu conheço e merece tudo de bom desse mundo. <br> 
         Espero que na próxima eu possa dividir esse momento com você. <br>
-        Feliz aniversário, meu amor. <br>
-        Te amo forte ♥️</div>
+        <strong> Feliz aniversário, meu amor. <br>
+        Te amo forte ♥️ </strong></div>
 
 
-
+    <audio id="audio" src="flamengo.mp3"></audio>        
     <script>
         var imagem = document.getElementById("imagem");
         var texto = document.getElementById("texto");
         var texto2 = document.getElementById("texto2");
+        var audio = document.getElementById("audio");
         var cliques = 0;
         var animacaoAtiva = false;
 
@@ -105,8 +117,11 @@
                     mudarSrcDefinitivamente("gif_win.gif");
                     texto.style.display = "block"; 
                     texto2.style.display = "block";
+                    audio.volume = 0.5;
+                    audio.play();
+                    confetti();
                 } else {
-                    mudarSrcTemporariamente("gif_click.gif", 500); 
+                    mudarSrcTemporariamente("gif_click.gif", 1000); 
                 }
             }
         });
